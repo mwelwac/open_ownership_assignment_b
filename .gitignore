@@ -1,0 +1,52 @@
+# macOS / editor state
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.venv/
+venv/
+backend/venv/
+backend/.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.log
+db.sqlite3
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+
+# Django migrations
+backend/**/migrations/*.py
+!backend/**/migrations/__init__.py
+
+# Node / React / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/coverage/
+frontend/.vite/
+frontend/*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Generated frontend bundle served by Django
+backend/static/frontend/

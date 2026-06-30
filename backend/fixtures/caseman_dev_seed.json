@@ -1,0 +1,405 @@
+[
+  {
+    "model": "accounts.role",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "code": "APPLICANT",
+      "name": "Applicant",
+      "description": "Can create, edit, submit, and track their own applications.",
+      "is_active": true
+    }
+  },
+  {
+    "model": "accounts.role",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-06-30T00:00:00Z",
+      "updated_at": "2026-06-30T00:00:00Z",
+      "code": "REVIEWER",
+      "name": "Reviewer",
+      "description": "Can review submitted applications and perform reviewer workflow actions.",
+      "is_active": true
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WtSAg7ruPsKnzyQ8XzayMK$zl5MUWwmCMKmojyHzBVKdyOJovCz+nHvglNQRQ7OEZE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "applicant@example.com",
+      "first_name": "Mwelwa",
+      "last_name": "Applicant",
+      "email": "applicant@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-30T00:00:00Z",
+      "uuid": "11111111-1111-4111-8111-111111111111",
+      "role": "APPLICANT",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WtSAg7ruPsKnzyQ8XzayMK$zl5MUWwmCMKmojyHzBVKdyOJovCz+nHvglNQRQ7OEZE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "reviewer@example.com",
+      "first_name": "Robin",
+      "last_name": "Reviewer",
+      "email": "reviewer@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-30T00:00:00Z",
+      "uuid": "22222222-2222-4222-8222-222222222222",
+      "role": "REVIEWER",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WtSAg7ruPsKnzyQ8XzayMK$zl5MUWwmCMKmojyHzBVKdyOJovCz+nHvglNQRQ7OEZE=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin@example.com",
+      "first_name": "Ada",
+      "last_name": "Admin",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-06-30T00:00:00Z",
+      "uuid": "33333333-3333-4333-8333-333333333333",
+      "role": "REVIEWER",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$WtSAg7ruPsKnzyQ8XzayMK$zl5MUWwmCMKmojyHzBVKdyOJovCz+nHvglNQRQ7OEZE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "applicant2@example.com",
+      "first_name": "Chanda",
+      "last_name": "Applicant",
+      "email": "applicant2@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-06-30T00:00:00Z",
+      "uuid": "44444444-4444-4444-8444-444444444444",
+      "role": "APPLICANT",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-06-26T08:00:00Z",
+      "updated_at": "2026-06-29T11:30:00Z",
+      "owner": 1,
+      "title": "Name clearance for Blue Oak Ltd",
+      "category": "NAME_CLEARANCE",
+      "description": "Name clearance request for a new private company. Reviewer has requested a clearer supporting note before resubmission.",
+      "amount": "150.00",
+      "attachment": "",
+      "status": "DRAFT"
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-06-28T09:15:00Z",
+      "updated_at": "2026-06-28T09:40:00Z",
+      "owner": 1,
+      "title": "Incorporation Application",
+      "category": "INCORPORATION",
+      "description": "Application for company incorporation with basic shareholder details supplied.",
+      "amount": "500.00",
+      "attachment": "",
+      "status": "SUBMITTED"
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 3,
+    "fields": {
+      "created_at": "2026-06-27T10:00:00Z",
+      "updated_at": "2026-06-29T14:20:00Z",
+      "owner": 4,
+      "title": "Beneficial ownership declaration",
+      "category": "BO_DECLARATION",
+      "description": "Beneficial ownership declaration awaiting reviewer decision.",
+      "amount": null,
+      "attachment": "",
+      "status": "UNDER_REVIEW"
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 4,
+    "fields": {
+      "created_at": "2026-06-24T13:45:00Z",
+      "updated_at": "2026-06-29T16:05:00Z",
+      "owner": 1,
+      "title": "Details update for existing company",
+      "category": "DETAILS_UPDATE",
+      "description": "Request to update registered office details.",
+      "amount": "75.00",
+      "attachment": "",
+      "status": "APPROVED"
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": 5,
+    "fields": {
+      "created_at": "2026-06-23T07:20:00Z",
+      "updated_at": "2026-06-29T17:10:00Z",
+      "owner": 4,
+      "title": "Legacy records correction",
+      "category": "DETAILS_UPDATE",
+      "description": "Correction request rejected because the supporting basis was incomplete.",
+      "amount": "100.00",
+      "attachment": "",
+      "status": "REJECTED"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 1,
+    "fields": {
+      "application": 1,
+      "actor": 1,
+      "from_status": "DRAFT",
+      "to_status": "SUBMITTED",
+      "comment": "",
+      "created_at": "2026-06-26T08:30:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 2,
+    "fields": {
+      "application": 1,
+      "actor": 2,
+      "from_status": "SUBMITTED",
+      "to_status": "UNDER_REVIEW",
+      "comment": "",
+      "created_at": "2026-06-27T09:00:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 3,
+    "fields": {
+      "application": 1,
+      "actor": 2,
+      "from_status": "UNDER_REVIEW",
+      "to_status": "DRAFT",
+      "comment": "Please add a clearer justification for the proposed company name, then resubmit.",
+      "created_at": "2026-06-29T11:30:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 4,
+    "fields": {
+      "application": 2,
+      "actor": 1,
+      "from_status": "DRAFT",
+      "to_status": "SUBMITTED",
+      "comment": "",
+      "created_at": "2026-06-28T09:40:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 5,
+    "fields": {
+      "application": 3,
+      "actor": 4,
+      "from_status": "DRAFT",
+      "to_status": "SUBMITTED",
+      "comment": "",
+      "created_at": "2026-06-27T10:30:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 6,
+    "fields": {
+      "application": 3,
+      "actor": 2,
+      "from_status": "SUBMITTED",
+      "to_status": "UNDER_REVIEW",
+      "comment": "",
+      "created_at": "2026-06-29T14:20:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 7,
+    "fields": {
+      "application": 4,
+      "actor": 1,
+      "from_status": "DRAFT",
+      "to_status": "SUBMITTED",
+      "comment": "",
+      "created_at": "2026-06-24T14:10:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 8,
+    "fields": {
+      "application": 4,
+      "actor": 2,
+      "from_status": "SUBMITTED",
+      "to_status": "UNDER_REVIEW",
+      "comment": "",
+      "created_at": "2026-06-25T08:40:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 9,
+    "fields": {
+      "application": 4,
+      "actor": 2,
+      "from_status": "UNDER_REVIEW",
+      "to_status": "APPROVED",
+      "comment": "Approved after review.",
+      "created_at": "2026-06-29T16:05:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 10,
+    "fields": {
+      "application": 5,
+      "actor": 4,
+      "from_status": "DRAFT",
+      "to_status": "SUBMITTED",
+      "comment": "",
+      "created_at": "2026-06-23T08:00:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 11,
+    "fields": {
+      "application": 5,
+      "actor": 2,
+      "from_status": "SUBMITTED",
+      "to_status": "UNDER_REVIEW",
+      "comment": "",
+      "created_at": "2026-06-24T09:30:00Z"
+    }
+  },
+  {
+    "model": "applications.statustransition",
+    "pk": 12,
+    "fields": {
+      "application": 5,
+      "actor": 2,
+      "from_status": "UNDER_REVIEW",
+      "to_status": "REJECTED",
+      "comment": "Rejected because the supporting basis for the correction was incomplete.",
+      "created_at": "2026-06-29T17:10:00Z"
+    }
+  },
+  {
+    "model": "applications.notification",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-06-29T11:30:00Z",
+      "updated_at": "2026-06-29T11:30:00Z",
+      "recipient": 1,
+      "application": 1,
+      "transition": 3,
+      "event_type": "CHANGES_REQUESTED",
+      "title": "Changes requested",
+      "message": "A reviewer requested changes to \"Name clearance for Blue Oak Ltd\".",
+      "is_read": false,
+      "read_at": null
+    }
+  },
+  {
+    "model": "applications.notification",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-06-28T09:40:00Z",
+      "updated_at": "2026-06-28T09:40:00Z",
+      "recipient": 2,
+      "application": 2,
+      "transition": 4,
+      "event_type": "APPLICATION_SUBMITTED",
+      "title": "Application submitted",
+      "message": "\"Incorporation Application\" is ready for review.",
+      "is_read": false,
+      "read_at": null
+    }
+  },
+  {
+    "model": "applications.notification",
+    "pk": 3,
+    "fields": {
+      "created_at": "2026-06-29T14:20:00Z",
+      "updated_at": "2026-06-29T15:00:00Z",
+      "recipient": 4,
+      "application": 3,
+      "transition": 6,
+      "event_type": "STATUS_CHANGED",
+      "title": "Application under review",
+      "message": "\"Beneficial ownership declaration\" is now under review.",
+      "is_read": true,
+      "read_at": "2026-06-29T15:00:00Z"
+    }
+  },
+  {
+    "model": "applications.notification",
+    "pk": 4,
+    "fields": {
+      "created_at": "2026-06-29T16:05:00Z",
+      "updated_at": "2026-06-29T16:30:00Z",
+      "recipient": 1,
+      "application": 4,
+      "transition": 9,
+      "event_type": "STATUS_CHANGED",
+      "title": "Application approved",
+      "message": "\"Details update for existing company\" has been approved.",
+      "is_read": true,
+      "read_at": "2026-06-29T16:30:00Z"
+    }
+  },
+  {
+    "model": "applications.notification",
+    "pk": 5,
+    "fields": {
+      "created_at": "2026-06-29T17:10:00Z",
+      "updated_at": "2026-06-29T17:10:00Z",
+      "recipient": 4,
+      "application": 5,
+      "transition": 12,
+      "event_type": "STATUS_CHANGED",
+      "title": "Application rejected",
+      "message": "\"Legacy records correction\" has been rejected.",
+      "is_read": false,
+      "read_at": null
+    }
+  }
+]
