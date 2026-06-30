@@ -32,10 +32,6 @@ backend/db.sqlite3
 backend/media/
 backend/staticfiles/
 
-# Django migrations
-backend/**/migrations/*.py
-!backend/**/migrations/__init__.py
-
 # Node / React / Vite
 frontend/node_modules/
 frontend/dist/

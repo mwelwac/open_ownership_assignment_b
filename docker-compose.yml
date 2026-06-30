@@ -1,22 +1,57 @@
 services:
+  app:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-caseman}:${POSTGRES_PASSWORD:-caseman}@postgres:5432/${POSTGRES_DB:-caseman}
+      MEDIA_ROOT: /app/backend/media
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose:
+      - "8000"
+    volumes:
+      - caseman_media:/app/backend/media
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import os, urllib.request; req = urllib.request.Request('http://127.0.0.1:8000/', headers={'Host': os.environ.get('HEALTHCHECK_HOST', 'localhost')}); urllib.request.urlopen(req, timeout=5)\"",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
   postgres:
     image: postgres:16-alpine
-    container_name: caseman-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: caseman
-      POSTGRES_USER: caseman
-      POSTGRES_PASSWORD: caseman
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: ${POSTGRES_DB:-caseman}
+      POSTGRES_USER: ${POSTGRES_USER:-caseman}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-caseman}
     volumes:
       - caseman_postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U caseman -d caseman"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-caseman} -d ${POSTGRES_DB:-caseman}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_started
+    ports:
+      - "80:80"
+    volumes:
+      - ./deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
 volumes:
   caseman_postgres_data:
-
+  caseman_media:
